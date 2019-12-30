@@ -13,6 +13,15 @@
     position: absolute;
 }
 
+.ftco-navbar-light .imgwhite {
+    display: inline;
+}
+
 .ftco-navbar-light.scrolled .imgblack {
     display: inline;
+}
+
+.ftco-navbar-light.scrolled .imgwhite {
+    display: none;
+    position: absolute;
 }
