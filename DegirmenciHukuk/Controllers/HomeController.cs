@@ -6,18 +6,20 @@ using System.Net.Http;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using Microsoft.Extensions.Configuration;
-using System.Net.Mail;
-using System.Text;
+using DH.Entities.Entities;
+using DH.Business.Abstracts;
 
 namespace DegirmenciHukuk.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IMailBusiness _mailBusiness;
         private readonly ILogger<HomeController> _logger;
         public IConfiguration _configuration { get; }
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IMailBusiness mailBusiness)
         {
+            _mailBusiness = mailBusiness;
             _logger = logger;
             _configuration = configuration;
         }
@@ -50,7 +52,7 @@ namespace DegirmenciHukuk.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(MailModel mail)
+        public IActionResult Index(Mail mail)
         {
             // get reCAPTHCA key from appsettings.json
             ViewData["ReCaptchaKey"] = _configuration.GetSection("GoogleReCaptcha:key").Value;
@@ -64,7 +66,7 @@ namespace DegirmenciHukuk.Controllers
                     return View();
                 }
 
-                SendMail(mail);
+                _mailBusiness.Insert(mail);
                 TempData["Success"] = "Emailiniz başarıyla gönderildi.";
                 return View();
             }
@@ -99,30 +101,6 @@ namespace DegirmenciHukuk.Controllers
             }
 
             return true;
-        }
-
-        public void SendMail(MailModel mail)
-        {
-            var body = new StringBuilder();
-            body.AppendLine("Ad Soyad: " + mail.FullName);
-            body.AppendLine("E-Mail Adresi: " + mail.EmailAddress);
-            body.AppendLine("Konu: " + mail.Subject);
-            body.AppendLine("Mesaj: " + mail.Body);
-            using (var smtp = new SmtpClient
-            {
-                Host = "mail.degirmencihukuk.com",
-                Port = 587,
-                EnableSsl = false,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("info@degirmencihukuk.com", "degirmenci1508")
-            })
-            {
-                using (var message = new MailMessage("info@degirmencihukuk.com", "info@degirmencihukuk.com") { Subject = mail.Subject, Body = body.ToString() })
-                {
-                    smtp.Send(message);
-                }
-            }
         }
     }
 }

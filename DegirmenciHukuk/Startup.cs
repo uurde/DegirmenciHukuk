@@ -1,7 +1,10 @@
+using DH.Business.Abstracts;
+using DH.Business.Business;
+using DH.DataAccess.Abstracts;
+using DH.DataAccess.DataAccess;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,6 +23,28 @@ namespace DegirmenciHukuk
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Dependencies
+
+            services.AddScoped<IBlogCategoryBusiness, BlogCategoryBusiness>();
+            services.AddScoped<IBlogCategoryDal, BlogCategoryDal>();
+
+            services.AddScoped<IBlogCommentBusiness, BlogCommentBusiness>();
+            services.AddScoped<IBlogCommentDal, BlogCommentDal>();
+
+            services.AddScoped<IBlogPostBusiness, BlogPostBusiness>();
+            services.AddScoped<IBlogPostDal, BlogPostDal>();
+
+            services.AddScoped <IBlogTagBusiness, BlogTagBusiness>();
+            services.AddScoped<IBlogTagDal, BlogTagDal>();
+
+            services.AddScoped<IMailBusiness, MailBusiness>();
+            services.AddScoped<IMailDal, MailDal>();
+
+            services.AddScoped<IUserBusiness, UserBusiness>();
+            services.AddScoped<IUserDal, UserDal>();
+
+            #endregion
+
             services.AddControllersWithViews();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

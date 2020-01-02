@@ -4,6 +4,7 @@ namespace DH.Entities.Entities
 {
     public class User: BaseEntity, IEntity
     {
+        [Key]
         public int UserId { get; set; }
         public string Username { get; set; }
         public string UserPassword { get; set; }

@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstracts\" />
-    <Folder Include="Business\" />
+    <ProjectReference Include="..\DH.DataAccess\DH.DataAccess.csproj" />
+    <ProjectReference Include="..\DH.Entities\DH.Entities.csproj" />
   </ItemGroup>
 
 </Project>
