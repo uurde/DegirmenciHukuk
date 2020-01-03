@@ -1,54 +1,67 @@
 ﻿
 @{
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    Layout = null;
 }
-    <div align="center">
-        <div class="login-box">
-            <div class="login-logo">
-                <a><b>Değirmenci</b> Hukuk</a>
-            </div>
-            <!-- /.login-logo -->
-            <div class="card">
-                <div class="card-body login-card-body">
-                    <p class="login-box-msg">Giriş Yap</p>
-                    <form action="/Admin/Account/Login" method="post">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Kullanıcı Adı" name="Username">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Giriş - Değirmenci Hukuk Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/css/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a><b>Değirmenci</b> Hukuk</a>
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Giriş Yap</p>
+                <form action="/Admin/Account/Login" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Kullanıcı Adı" name="Username">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
                             </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Şifre" name="UserPassword">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Şifre" name="UserPassword">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="icheck-primary">
-                                    <input type="checkbox" id="remember">
-                                    <label for="remember">
-                                        Hatırla Beni
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Giriş</button>
-                            </div>
-                            <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            @*<div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Hatırla Beni
+                                </label>
+                            </div>*@
                         </div>
-                    </form>
-                    <p class="mb-1">
-                        <a href="#">Şifremi Unuttum</a>
-                    </p>
-                </div>
-                <!-- /.login-card-body -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+                        </div>
+                    </div>
+                </form>
+                @*<p class="mb-1">
+                    <a href="#">Şifremi Unuttum</a>
+                </p>*@
             </div>
         </div>
     </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/adminlte.min.js"></script>
+</body>
+</html>

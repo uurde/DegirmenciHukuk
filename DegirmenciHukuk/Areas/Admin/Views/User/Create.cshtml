@@ -1,0 +1,82 @@
+﻿@model DH.Entities.Entities.User
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Kullanıcı Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Kullanıcı Ekle</h3>
+        </div>
+        <div class="card-body">
+            <form asp-area="Admin" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+                        <div class="col-md-12">
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="LastName" class="col-md-2 control-label"></label>
+                        <div class="col-md-12">
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Username" class="col-md-4 control-label"></label>
+                        <div class="col-md-12">
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="UserPassword" class="col-md-4 control-label"></label>
+                        <div class="col-md-12">
+                            <input asp-for="UserPassword" class="form-control" type="password" />
+                            <span asp-validation-for="UserPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Description" class="col-md-4 control-label"></label>
+                        <div class="col-md-12">
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="UserPhotoPath" class="col-md-4 control-label"></label>
+                        <div class="col-md-12">
+                            <input asp-for="UserPhotoPath" class="form-control" />
+                            <span asp-validation-for="UserPhotoPath" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a asp-area="Admin" asp-controller="User" asp-action="Index">Listeye Geri Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+

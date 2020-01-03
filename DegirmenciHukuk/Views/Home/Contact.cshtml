@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model MailModel
+@model DH.Entities.Entities.Mail
 
 <style>
     .field-validation-error {
@@ -84,7 +84,7 @@
                     <input type="text" class="form-control" placeholder="Ad Soyad" asp-for="FullName" id="FullName">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" data-val="true" data-val-email="Please enter a valid email" id="EmailAddress" name="EmailAddress" asp-for="EmailAddress">
+                    <input type="email" class="form-control" placeholder="Email" data-val="true" data-val-email="Please enter a valid email" id="MailAddress" name="MailAddress" asp-for="MailAddress">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Konu" asp-for="Subject">

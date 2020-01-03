@@ -42,7 +42,7 @@ namespace DH.Business.Business
 
         public List<BlogModel> GetPublishedArticles()
         {
-            var blogPostDetails = _blogPostDal.GetBlogPostDetails().Where(x => x.IsDeleted == false && x.BlogStatus == "Published").OrderBy(x => x.CreDate).ToList();
+            var blogPostDetails = _blogPostDal.GetBlogPostDetails().Where(x => x.IsDeleted == false && x.BlogStatus == 1).OrderBy(x => x.CreDate).ToList();
             return blogPostDetails;
         }
 

@@ -12,6 +12,6 @@ namespace DH.Entities.Entities
         public string BlogDescription { get; set; }
         public int BlogCategoryId { get; set; }
         public string BlogTag { get; set; }
-        public string BlogStatus { get; set; }
+        public int BlogStatus { get; set; }
     }
 }

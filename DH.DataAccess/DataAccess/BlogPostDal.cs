@@ -13,8 +13,8 @@ namespace DH.DataAccess.DataAccess
         {
             using (Context context = new Context())
             {
-                var blogPost = from p in context.BlogPost
-                               join c in context.BlogCategory
+                var blogPost = from p in context.BlogPosts
+                               join c in context.BlogCategories
                                on p.BlogCategoryId equals c.BlogCategoryId
                                where p.BlogPostId == blogPostId
                                select new BlogModel
@@ -41,8 +41,8 @@ namespace DH.DataAccess.DataAccess
         {
             using (Context context = new Context())
             {
-                var blogPost = from p in context.BlogPost
-                               join c in context.BlogCategory
+                var blogPost = from p in context.BlogPosts
+                               join c in context.BlogCategories
                                on p.BlogCategoryId equals c.BlogCategoryId
                                select new BlogModel
                                {

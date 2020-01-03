@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DH.Business.Abstracts;
 using DH.Entities.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,6 +13,13 @@ namespace DegirmenciHukuk.Areas.Admin.Controllers
     [Area("Admin")]
     public class AccountController : Controller
     {
+        private readonly IUserBusiness _user;
+
+        public AccountController(IUserBusiness user)
+        {
+            _user = user;
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -52,7 +60,8 @@ namespace DegirmenciHukuk.Areas.Admin.Controllers
 
         private bool LoginUser(string username, string password)
         {
-            return true;
+            bool login = _user.Login(username, password); 
+            return login;
         }
     }
 }

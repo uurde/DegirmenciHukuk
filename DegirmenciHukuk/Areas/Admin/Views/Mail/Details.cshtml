@@ -1,0 +1,28 @@
+﻿@model DH.Entities.Entities.Mail
+@{
+    Layout = null;
+}
+    <div class="col-md-12">
+        <table>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FullName):</th>
+                <td>@Html.DisplayFor(model => model.FullName)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.MailAddress):</th>
+                <td>@Html.DisplayFor(model => model.MailAddress)</td>
+            </tr>
+            <tr>
+                <th>Geliş Tarihi:</th>
+                <td>@Html.DisplayFor(model => model.CreDate)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Subject):</th>
+                <td>@Html.DisplayFor(model => model.Subject)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Body):</th>
+                <td>@Html.DisplayFor(model => model.Body)</td>
+            </tr>
+        </table>
+    </div>

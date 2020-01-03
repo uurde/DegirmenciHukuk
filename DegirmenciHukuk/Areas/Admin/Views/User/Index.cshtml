@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DH.Entities.Entities.User>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kullanıcılar";
+}
+<section class="content-header">
+    <div class="container-fluid">
+
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Kullanıcı Listesi</h3>
+        </div>
+        <div class="card-body">
+            <a type="button" class="btn btn-block btn-outline-success col-md-1" asp-action="Create">Yeni</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName) @Html.DisplayNameFor(model => model.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                <a class="fa fa-edit" href="/Admin/User/Edit/@item.UserId" title="Güncelle"></a> |
+                                <a href="javascript:void(0);" class="anchorDetail fa fa-search" data-id="@item.UserId" title="Detay"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Kullanıcı Detayı</h4>
+            </div>
+            <div class="modal-body">
+                <div id="myModalContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var modalDetail = 'User/Details/';
+    $(function () {
+        $(".anchorDetail").click(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                type: "GET",
+                url: modalDetail,
+                contentType: "application/json; charset=utf-8",
+                data: { id },
+                datatype: "json",
+                success: function (data) {
+                    $('#myModalContent').html(data);
+                    $('#myModal').modal(options);
+                    $('#myModal').modal('show');
+
+                },
+                error: function () {
+                    alert("Dynamic content load failed.");
+                }
+            });
+        });
+
+        $("#closbtn").click(function () {
+            $('#myModal').modal('hide');
+        });
+    });
+
+</script>

@@ -7,6 +7,8 @@ namespace DH.Business.Abstracts
     {
         User Get(int userId);
 
+        User GetByName(string username);
+
         List<User> GetAll();
 
         void Insert(User user);
@@ -14,5 +16,7 @@ namespace DH.Business.Abstracts
         void Update(User user);
 
         void MarkAsDeleted(int userId);
+
+        bool Login(string username, string password);
     }
 }

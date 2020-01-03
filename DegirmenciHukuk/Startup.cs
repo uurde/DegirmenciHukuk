@@ -1,5 +1,6 @@
 using DH.Business.Abstracts;
 using DH.Business.Business;
+using DH.Core.Encryption;
 using DH.DataAccess.Abstracts;
 using DH.DataAccess.DataAccess;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -34,7 +35,7 @@ namespace DegirmenciHukuk
             services.AddScoped<IBlogPostBusiness, BlogPostBusiness>();
             services.AddScoped<IBlogPostDal, BlogPostDal>();
 
-            services.AddScoped <IBlogTagBusiness, BlogTagBusiness>();
+            services.AddScoped<IBlogTagBusiness, BlogTagBusiness>();
             services.AddScoped<IBlogTagDal, BlogTagDal>();
 
             services.AddScoped<IMailBusiness, MailBusiness>();
@@ -42,6 +43,8 @@ namespace DegirmenciHukuk
 
             services.AddScoped<IUserBusiness, UserBusiness>();
             services.AddScoped<IUserDal, UserDal>();
+
+            services.AddScoped<IEncryption, Encryption>();
 
             #endregion
 
@@ -77,11 +80,12 @@ namespace DegirmenciHukuk
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapAreaControllerRoute(
-                    "Admin", "Admin", "Admin/{controller=Admin}/{action=Index}/{id?}");
             });
         }
     }
