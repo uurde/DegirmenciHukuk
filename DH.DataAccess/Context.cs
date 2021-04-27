@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DH.Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DH.DataAccess
 {
@@ -7,8 +8,15 @@ namespace DH.DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //TODO: gitignore
-            //NetDirekt Production SQL
-            optionsBuilder.UseSqlServer(@"Server = 77.223.142.42; Initial Catalog = UgurDegirmenci; Persist Security Info = False; User ID = uurde; Password =0734ypkEUZ87; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = True; Connection Timeout = 30;");
+            //GoDaddy Production SQL
+            optionsBuilder.UseSqlServer(@"Server = 77.245.159.23; Initial Catalog = DegirmenciHukuk; Persist Security Info = False; User ID = uurde; Password =0734ypkEUZ87@; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = True; Connection Timeout = 30;");
         }
+
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<BlogComment> BlogComments { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
+        public DbSet<BlogTag> BlogTags { get; set; }
+        public DbSet<Mail> Mails { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

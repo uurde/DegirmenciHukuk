@@ -48,7 +48,7 @@ namespace DegirmenciHukuk
 
             #endregion
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
